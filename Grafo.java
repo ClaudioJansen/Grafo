@@ -57,6 +57,8 @@ public class Grafo{
             e.getMessage());
         }
 
+        int[][] matrizAdjacencia = new int[cidades.size()][cidades.size()];
+
         for(int i = 0; i < cidades.size(); i++){
             double[] citiesDistance = new double[MAX_CITIES_SIZE];
 
@@ -87,10 +89,32 @@ public class Grafo{
                 arrayPositions[j] = posicao;
 
             }
-            cidades.get(i).setCidade1(arrayPositions[0]);
-            cidades.get(i).setCidade2(arrayPositions[1]);
-            cidades.get(i).setCidade3(arrayPositions[2]);
-            cidades.get(i).setCidade4(arrayPositions[3]);
+
+            for(int j = 0; j < cidades.size(); j++){
+                if(j == arrayPositions[0]){
+                    matrizAdjacencia[i][j] = arrayPositions[0];
+                }
+                else if(j == arrayPositions[1]){
+                    matrizAdjacencia[i][j] = arrayPositions[1];
+                }
+                else if(j == arrayPositions[2]){
+                    matrizAdjacencia[i][j] = arrayPositions[2];
+                }   
+                else if(j == arrayPositions[3]){
+                    matrizAdjacencia[i][j] = arrayPositions[3];
+                }
+                else{
+                    matrizAdjacencia[i][j] = 0;
+                }
+            }
+
+            for(int j = 0; j < 110; j++){
+                System.out.print(matrizAdjacencia[i][j] + " ");
+            }
+            System.out.printf("\n");
+            
         }
+
     }
+
 }
